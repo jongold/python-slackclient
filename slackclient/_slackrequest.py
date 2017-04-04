@@ -66,7 +66,7 @@ class SlackRequest(object):
         upload_requests = ['files.upload']
         files = None
         if request in upload_requests:
-            files = {'file': post_data.pop('file')} if 'file' in post_data else None
+            files = {'file': post_data.pop('files').pop('file')} if 'files' in post_data else None
 
         for k, v in six.iteritems(post_data):
             if not isinstance(v, six.string_types):
